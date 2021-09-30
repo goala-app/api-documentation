@@ -35,6 +35,12 @@ components:
           format: date-time
         workout_id:
           type: string
+        workout_name:
+          type: string
+      required:
+        - user_id
+        - workout_start
+        - workout_end
 paths:
 # Authentication
   /auth/register:

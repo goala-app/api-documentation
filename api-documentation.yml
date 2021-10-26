@@ -22,6 +22,38 @@ components:
       properties:
         updatedData:
           $ref: "#/components/schemas/User"
+    Bodypart:
+      type: string
+      enum:
+        - chest
+        - shoulders
+        - biceps
+        - briceps
+        - forearms
+        - back
+        - hamstrings
+        - quads
+        - calves
+        - abs
+        - glutes
+        - abductors
+        - adductors
+        
+    Exercise:
+      type: object
+      properties:
+        exercise_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        bodypart_primary:
+          $ref: '#/components/schemas/Bodypart'
+        bodypart_secondary:
+          $ref: '#/components/schemas/Bodypart'
+        description:
+          type: string
+
 paths:
 # Authentication
   /auth/register:
@@ -186,5 +218,38 @@ paths:
                 $ref: '#/components/schemas/User'
         '404':
           description: User with given ID does not exist
+        '500':
+          description: General Server Error
+
+  # Exercise endpoint
+  /exercise:
+    get:
+      tags:
+        - Exercise
+      summary: Get all exercises
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '500':
+          description: General Server Error
+
+  /exercise/{bodypart}:
+    get:
+      tags:
+        - Exercise
+      summary: Get exercises for specific bodypart
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Exercise'
+        '400':
+          description: Unknown bodypart
         '500':
           description: General Server Error

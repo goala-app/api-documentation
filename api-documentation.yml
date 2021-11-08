@@ -38,6 +38,11 @@ components:
         - glutes
         - abductors
         - adductors
+    Privacy:
+      type: string
+      enum:
+        - public
+        - private
         
     Exercise:
       type: object
@@ -53,6 +58,23 @@ components:
           $ref: '#/components/schemas/Bodypart'
         description:
           type: string
+    Workout:
+      type: object
+      properties:
+        workout_id:
+          type: string
+          format: uuid
+        workout_name:
+          type: string
+        description:
+          type: string
+        creator:
+          type: string
+          format: uuid
+        privacy: 
+          $ref: '#/components/schemas/Privacy'
+        is_promoted:
+          type: boolean
 
 paths:
 # Authentication
@@ -251,5 +273,34 @@ paths:
                 $ref: '#/components/schemas/Exercise'
         '400':
           description: Unknown bodypart
+        '500':
+          description: General Server Error
+      
+  # Workout endpoint
+  /workouts:
+    get:
+      tags:
+        - Workouts
+      parameters:
+        - in: query
+          name: user
+          schema:
+            type: string
+            format: uuid
+          description: returns workouts available to given user
+          name: creator
+          schema:
+            type: string
+            format: uuid
+          description: Returns all workouts created by given creator
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workout'
+        '400':
+          description: Profile does not exist
         '500':
           description: General Server Error

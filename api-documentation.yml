@@ -159,10 +159,10 @@ paths:
           description: General Server Error
         
 # User operations
-  /user/me:
+  /users/me:
     get:
       tags:
-        - User 
+        - Users
       summary: Get current user
       description: Returns data for currently logged in user
       responses:
@@ -176,10 +176,10 @@ paths:
           description: No authenticated user
         '500':
           description: General server error
-  /user/id/{userId}:
+  /users/id/{userId}:
     delete:
       tags:
-        - User
+        - Users
       summary: Delete a user by id
       parameters:
         - in: path
@@ -244,10 +244,10 @@ paths:
           description: General Server Error
 
   # Exercise endpoint
-  /exercise:
+  /exercises:
     get:
       tags:
-        - Exercise
+        - Exercises
       summary: Get all exercises
       responses:
         '200':
@@ -259,10 +259,10 @@ paths:
         '500':
           description: General Server Error
 
-  /exercise/{bodypart}:
+  /exercises/{bodypart}:
     get:
       tags:
-        - Exercise
+        - Exercises
       summary: Get exercises for specific bodypart
       responses:
         '200':

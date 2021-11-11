@@ -170,8 +170,11 @@ paths:
           description: OK
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+                schema:
+                  type: object
+                  properties:
+                    data: 
+                      $ref: '#/components/schemas/User'
         '401':
           description: No authenticated user
         '500':
@@ -236,8 +239,11 @@ paths:
           description: OK
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/User'
+                schema:
+                  type: object
+                  properties:
+                    data: 
+                      $ref: '#/components/schemas/User'
         '404':
           description: User with given ID does not exist
         '500':
@@ -255,10 +261,12 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Exercise'
+                type: object
+                properties:
+                  data: 
+                    $ref: '#/components/schemas/Exercise'
         '500':
           description: General Server Error
-
   /exercises/{bodypart}:
     get:
       tags:
@@ -270,7 +278,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Exercise'
+                type: object
+                properties:
+                  data: 
+                    $ref: '#/components/schemas/Exercise'
         '400':
           description: Unknown bodypart
         '500':
@@ -300,7 +311,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Workout'
+                type: object
+                properties:
+                  data: 
+                    $ref: '#/components/schemas/Workout'
         '400':
           description: Profile does not exist
         '500':

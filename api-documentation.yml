@@ -113,7 +113,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  token:
+                  data: 
                     type: string
         '400':
           description: Bad Request
@@ -149,7 +149,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  token:
+                  data: 
                     type: string
         '400': 
           description: Bad Request
@@ -263,8 +263,10 @@ paths:
               schema:
                 type: object
                 properties:
-                  data: 
-                    $ref: '#/components/schemas/Exercise'
+                  data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/Exercise'
         '500':
           description: General Server Error
   /exercises/{bodypart}:
@@ -281,7 +283,9 @@ paths:
                 type: object
                 properties:
                   data: 
-                    $ref: '#/components/schemas/Exercise'
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Exercise'
         '400':
           description: Unknown bodypart
         '500':
@@ -313,8 +317,10 @@ paths:
               schema:
                 type: object
                 properties:
-                  data: 
-                    $ref: '#/components/schemas/Workout'
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Workout'
         '400':
           description: Profile does not exist
         '500':

@@ -114,7 +114,10 @@ paths:
                 type: object
                 properties:
                   data: 
-                    type: string
+                    type: object
+                    properties:
+                      token:
+                        type: string
         '400':
           description: Bad Request
         '409':
@@ -150,7 +153,10 @@ paths:
                 type: object
                 properties:
                   data: 
-                    type: string
+                    type: object
+                    properties:
+                      token:
+                        type: string
         '400': 
           description: Bad Request
         '401':
@@ -174,7 +180,10 @@ paths:
                   type: object
                   properties:
                     data: 
-                      $ref: '#/components/schemas/User'
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
         '401':
           description: No authenticated user
         '500':
@@ -243,7 +252,10 @@ paths:
                   type: object
                   properties:
                     data: 
-                      $ref: '#/components/schemas/User'
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
         '404':
           description: User with given ID does not exist
         '500':
@@ -264,9 +276,12 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                        $ref: '#/components/schemas/Exercise'
+                    type: object
+                    properties:
+                      exercises:
+                        type: array
+                        items:
+                            $ref: '#/components/schemas/Exercise'
         '500':
           description: General Server Error
   /exercises/{bodypart}:
@@ -282,10 +297,13 @@ paths:
               schema:
                 type: object
                 properties:
-                  data: 
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Exercise'
+                  data:
+                    type: object
+                    properties:
+                      exercises:
+                        type: array
+                        items:
+                            $ref: '#/components/schemas/Exercise'
         '400':
           description: Unknown bodypart
         '500':
@@ -318,9 +336,12 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/Workout'
+                    type: object
+                    properties:
+                      workouts:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Workout'
         '400':
           description: Profile does not exist
         '500':

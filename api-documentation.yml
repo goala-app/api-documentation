@@ -17,6 +17,12 @@ components:
         date_of_birth:
           type: string
           format: date
+        name:
+          type: string
+        location:
+          type: string
+        biography:
+          type: string
     updatedData:
       type: object
       properties:

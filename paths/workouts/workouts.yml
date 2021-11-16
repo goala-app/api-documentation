@@ -7,7 +7,7 @@ get:
       schema:
         type: string
         format: uuid
-      description: returns workouts available to given user
+      description: returns promoted and own workouts of user
     - in: query
       name: creator
       schema:

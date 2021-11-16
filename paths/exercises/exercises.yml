@@ -1,7 +1,20 @@
 get:
   tags:
     - Exercises
-  summary: Get all exercises
+  summary: Returns all promoted exercises
+  parameters:
+  - in: query
+    name: user_id
+    schema:
+      type: string
+      format: uuid
+    description: returns promoted and own exercises of the given user
+  - in: query
+    name: creator
+    schema:
+      type: string
+      format: uuid
+    description: Returns all exercises created by given creator
   responses:
     '200':
       description: OK

@@ -1,0 +1,16 @@
+type: object
+properties:
+  workout_id:
+    type: string
+    format: uuid
+  workout_name:
+    type: string
+  description:
+    type: string
+  creator:
+    type: string
+    format: uuid
+  privacy: 
+    $ref: './privacy.yml'
+  is_promoted:
+    type: boolean

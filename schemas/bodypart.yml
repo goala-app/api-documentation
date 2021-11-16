@@ -1,0 +1,15 @@
+type: string
+enum:
+  - chest
+  - shoulders
+  - biceps
+  - triceps
+  - forearms
+  - back
+  - hamstrings
+  - quads
+  - calves
+  - abs
+  - glutes
+  - abductors
+  - adductors

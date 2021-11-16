@@ -1,0 +1,71 @@
+delete:
+  tags:
+    - Users
+  summary: Delete a user by id
+  parameters:
+    - in: path
+      name: userId
+      schema:
+        type: string
+      required: true
+      description: Id of user to be deleted
+  responses:
+    '200': 
+      description: OK
+    '404':
+      description: User with given ID does not exist
+    '500':
+      description: General Server Error
+patch:
+  tags:
+    - User
+  summary: Update User
+  parameters:
+    - in: path
+      name: userId
+      schema:
+        type: string
+      required: true
+      description: Id of user to be updated
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/updatedData.yml'  
+        example:
+          updatedData: { username: 'foo' }
+  responses:
+    '200': 
+      description: OK
+    '404':
+      description: User with given ID does not exist
+    '500':
+      description: General Server Error
+get:
+  tags: 
+    - User
+  summary: Get profile for user given ID
+  parameters:
+    - in: path
+      name: userId
+      schema:
+        type: string
+      required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+            schema:
+              type: object
+              properties:
+                data: 
+                  type: object
+                  properties:
+                    user:
+                      $ref: '../../schemas/user.yml'
+    '404':
+      description: User with given ID does not exist
+    '500':
+      description: General Server Error

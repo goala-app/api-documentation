@@ -1,0 +1,13 @@
+type: object
+properties:
+  exercise_id:
+    type: string
+    format: uuid
+  name:
+    type: string
+  bodypart_primary:
+    $ref: './bodypart.yml'
+  bodypart_secondary:
+    $ref: './bodypart.yml'
+  description:
+    type: string

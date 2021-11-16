@@ -1,0 +1,38 @@
+post:
+  tags: 
+    - Authentication
+  summary: Login an existing user
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            login:
+              type: string
+              description: Username or email
+            password:
+              type: string
+          required: 
+            - login
+            - password
+  responses:
+    '200': 
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: 
+                type: object
+                properties:
+                  token:
+                    type: string
+    '400': 
+      description: Bad Request
+    '401':
+      description: Authentication failed
+    '500':
+      description: General Server Error

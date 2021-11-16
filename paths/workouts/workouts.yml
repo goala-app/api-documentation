@@ -1,0 +1,83 @@
+get:
+  tags:
+    - Workouts
+  parameters:
+    - in: query
+      name: user_id
+      schema:
+        type: string
+        format: uuid
+      description: returns workouts available to given user
+    - in: query
+      name: creator
+      schema:
+        type: string
+        format: uuid
+      description: Returns all workouts created by given creator
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  workouts:
+                    type: array
+                    items:
+                      $ref: '../../schemas/workout.yml'
+    '400':
+      description: Profile does not exist
+    '500':
+      description: General Server Error
+post:
+  tags:
+    - Workouts
+  summary: Create a new workout
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            workout_name:
+              type: string
+            creator:
+              type: string
+              format: uuid
+            description:
+              type: string
+            is_promoted:
+              type: boolean
+              description: Is workout promoted by Goala?
+              default: false
+            privacy:
+              $ref: '../../schemas/privacy.yml'
+              default: "public"
+          required: 
+            - creator
+            - workout_name
+  responses:
+    '200': 
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: 
+                type: object
+                properties:
+                  workouts:
+                    type: array
+                    items:
+                      $ref: '../../schemas/workout.yml'
+                  
+    '400': 
+      description: Bad Request
+    '500':
+      description: General Server Error

@@ -1,0 +1,21 @@
+get:
+  tags:
+    - Exercises
+  summary: Get all exercises
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  exercises:
+                    type: array
+                    items:
+                        $ref: '../../schemas/exercise.yml'
+    '500':
+      description: General Server Error

@@ -11,3 +11,14 @@ properties:
     $ref: './bodypart.yml'
   description:
     type: string
+  creator:
+    type: string
+    format: uuid
+  privacy:
+    $ref: './privacy.yml'
+  is_promoted: 
+    type: boolean
+required:
+  - name
+  - creator
+  - bodypart_primary

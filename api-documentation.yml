@@ -23,4 +23,6 @@ paths:
       
   # Workout endpoint
   /workouts:
-    $ref: './paths/exercises/exercises.yml'
+    $ref: './paths/workouts/workouts.yml'
+  /workouts/id:
+    $ref: './paths/workouts/workout_exercises.yml'

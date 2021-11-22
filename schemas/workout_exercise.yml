@@ -1,0 +1,6 @@
+type: object
+properties:
+  exercise_order:
+    type: integer
+  exercise:
+    $ref: './exercise.yml'

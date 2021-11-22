@@ -1,122 +1,84 @@
-  /workouts:
-    get:
-      tags:
-        - Workouts
-      parameters:
-        - in: query
-          name: user_id
+get:
+  tags:
+    - Workouts
+  parameters:
+    - in: query
+      name: user_id
+      schema:
+        type: string
+        format: uuid
+      description: returns promoted and own workouts of user
+    - in: query
+      name: creator
+      schema:
+        type: string
+        format: uuid
+      description: Returns all workouts created by given creator
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
           schema:
-            type: string
-            format: uuid
-          description: returns promoted and own workouts of user
-        - in: query
-          name: creator
-          schema:
-            type: string
-            format: uuid
-          description: Returns all workouts created by given creator
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
+            type: object
+            properties:
+              data:
                 type: object
                 properties:
-                  data:
-                    type: object
-                    properties:
-                      workouts:
-                        type: array
-                        items:
-                          $ref: '../../schemas/workout.yml'
-        '400':
-          description: Profile does not exist
-        '500':
-          description: General Server Error
-    post:
-      tags:
-        - Workouts
-      summary: Create a new workout
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                workout_name:
-                  type: string
-                creator:
-                  type: string
-                  format: uuid
-                description:
-                  type: string
-                is_promoted:
-                  type: boolean
-                  description: Is workout promoted by Goala?
-                  default: false
-                privacy:
-                  $ref: '../../schemas/privacy.yml'
-                  default: "public"
-              required: 
-                - creator
-                - workout_name
-      responses:
-        '200': 
-          description: OK
-          content:
-            application/json:
-              schema:
+                  workouts:
+                    type: array
+                    items:
+                      $ref: '../../schemas/workout.yml'
+    '400':
+      description: Profile does not exist
+    '500':
+      description: General Server Error
+post:
+  tags:
+    - Workouts
+  summary: Create a new workout
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            workout_name:
+              type: string
+            creator:
+              type: string
+              format: uuid
+            description:
+              type: string
+            is_promoted:
+              type: boolean
+              description: Is workout promoted by Goala?
+              default: false
+            privacy:
+              $ref: '../../schemas/privacy.yml'
+              default: "public"
+          required: 
+            - creator
+            - workout_name
+  responses:
+    '200': 
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data: 
                 type: object
                 properties:
-                  data: 
-                    type: object
-                    properties:
-                      workouts:
-                        type: array
-                        items:
-                          $ref: '../../schemas/workout.yml'
-                      
-        '400': 
-          description: Bad Request
-        '500':
-          description: General Server Error
-  /workouts/id/{workout_id}:
-    post:
-      tags: 
-        - Workouts
-      summary: Adds an exercise to a workout
-      parameters:
-        - in: path
-          name: workout_id
-          type: string
-          format: uuid
-          required: true
-          description: Target workout
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                exercise_id:
-                  type: string
-                  format: uuid
-                exercise_order:
-                  type: integer
-              required:
-                - exercise_id
-                - exercise_order
-      responses:
-        '200':
-          description: OK
-        '304':
-          description: Exercise already in workout
-        '400':
-          description: Missing parameter
-        '404':
-          description: Workout does not exist
-        '500':
-          description: General Server Error
+                  workouts:
+                    type: array
+                    items:
+                      $ref: '../../schemas/workout.yml'
+                  
+    '400': 
+      description: Bad Request
+    '500':
+      description: General Server Error
+  

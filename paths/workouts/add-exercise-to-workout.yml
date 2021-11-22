@@ -1,0 +1,37 @@
+post:
+  tags: 
+    - Workouts
+  summary: Adds an exercise to a workout
+  parameters:
+    - in: path
+      name: workout_id
+      type: string
+      format: uuid
+      required: true
+      description: Target workout
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            exercise_id:
+              type: string
+              format: uuid
+            exercise_order:
+              type: integer
+          required:
+            - exercise_id
+            - exercise_order
+  responses:
+    '200':
+      description: OK
+    '304':
+      description: Exercise already in workout
+    '400':
+      description: Missing parameter
+    '404':
+      description: Workout does not exist
+    '500':
+      description: General Server Error

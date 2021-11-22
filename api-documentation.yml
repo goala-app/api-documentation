@@ -24,5 +24,12 @@ paths:
   # Workout endpoint
   /workouts:
     $ref: './paths/workouts/workouts.yml'
-  /workouts/id:
-    $ref: './paths/workouts/workout_exercises.yml'
+  # Add exercise to workout
+  /workouts/id/{workout_id}:
+    $ref: './paths/workouts/add-exercise-to-workout.yml'
+  # Get workout exercises
+  /workouts/id/{workout_id}/exercises:
+    $ref: './paths/workouts/get-workout-exercises.yml'
+  # Remove exercise from workout
+  /workouts/id/{workout_id}/exercises/{exercise_id}:
+    $ref: './paths/workouts/remove-exercise-from-workout.yml'

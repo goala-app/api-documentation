@@ -1,0 +1,28 @@
+get:
+  tags:
+    - Workouts
+  summary: Get exercises of a workout
+  parameters:
+    - in: path
+      name: workout_id
+      type: string
+      format: uuid
+      required: true
+      description: Target workout
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+            schema:
+              type: object
+              properties:
+                data: 
+                  type: object
+                  properties:
+                    exercises:
+                      $ref: '../../schemas/workout_exercise.yml'
+    '404':
+      description: Workout does not exist
+    '500':
+      description: General Server Error

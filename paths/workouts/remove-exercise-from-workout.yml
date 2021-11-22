@@ -1,0 +1,24 @@
+delete:
+  tags: 
+    - Workouts
+  summary: Remove exercise from workout
+  parameters:
+    - in: path
+      name: workout_id
+      type: string
+      format: uuid
+      required: true
+      description: Target workout
+    - in: path
+      name: exercise_id
+      type: string
+      format: uuid
+      required: true
+      description: Target exercise
+  responses:
+    '200':
+      description: OK
+    '404':
+      description: Workout or Exercise does not exist
+    '500':
+      description: General Server error

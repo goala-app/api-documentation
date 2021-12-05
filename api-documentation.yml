@@ -24,3 +24,7 @@ paths:
   # Workout endpoint
   /workouts:
     $ref: './paths/exercises/exercises.yml'
+
+  # Files endpoint 
+  /files:
+    $ref: './paths/files/files.yml'

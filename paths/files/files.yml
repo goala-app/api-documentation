@@ -1,0 +1,17 @@
+get:
+  tags:
+    - Files
+  summary: Get signed profile picture upload URL
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+            schema:
+              type: object
+              properties:
+                data: 
+                  type: object
+                  properties:
+                    url: 
+                      type: string

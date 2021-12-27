@@ -1,9 +1,0 @@
-post:
-    tags: 
-      - Users
-    summary: Logout current user
-    responses:
-      '200':
-        description: User logged out successfully
-      '500':
-        description:: User could not be logged out

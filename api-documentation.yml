@@ -16,6 +16,8 @@ paths:
     $ref: './paths/users/me.yml'
   /users/id/{userId}:
     $ref: './paths/users/users.yml'
+  /users/logout:
+    $ref: './paths/users/logout.yml'
 
   # Exercise endpoint
   /exercises:
@@ -28,3 +30,6 @@ paths:
   # Files endpoint 
   /files:
     $ref: './paths/files/files.yml'
+
+  /refresh-token:
+    $ref: './paths/refresh-token/refresh-token.yml'

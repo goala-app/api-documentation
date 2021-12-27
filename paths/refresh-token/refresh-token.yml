@@ -1,16 +1,19 @@
 post:
     tags: 
       - Authentication
-    summary: Register a new user.
+    summary: Exchange refresh_token for a new access_token
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            $ref: '../../schemas/user.yml'
+            type: object
+            properties:
+              refresh_token:
+                type: string
     responses:
       '200':
-        description: User created successfully
+        description: Exchange successful
         content:
           application/json:
             schema:
@@ -23,9 +26,5 @@ post:
                       type: string
                     access_token:
                       type: string
-      '400':
-        description: Bad Request
-      '409':
-        description: User already exists
-      '500':
-        description: General Server Error
+      '403':
+        description: Token could not be renewed

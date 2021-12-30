@@ -1,7 +1,14 @@
-get:
+post:
   tags:
     - Files
   summary: Get signed profile picture upload URL
+  parameters:
+    - in: path
+      name: user_id
+      schema:
+        type: string
+      required: true
+      description: id of user whose profile picture will be added
   responses:
     '200':
       description: OK

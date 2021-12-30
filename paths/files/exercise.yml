@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Files
+  summary: Get signed exercise media upload URL
+  parameters:
+    - in: path
+      name: exercise_id
+      schema:
+        type: string
+      required: true
+      description: id of exercise the media will be added to
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+            schema:
+              type: object
+              properties:
+                data: 
+                  type: object
+                  properties:
+                    url: 
+                      type: string
+    '409':
+      description: Media type exceeds allowance for exercise
+    '500': 
+      description: Media could not be added

@@ -1,0 +1,7 @@
+type: object
+properties:
+  workout_type_id:
+    type: string
+    format: uuid
+  workout_type_name:
+    type: string

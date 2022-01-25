@@ -1,0 +1,6 @@
+type: string
+enum:
+  - beginner
+  - intermediate
+  - advanced
+  - expert
